@@ -1,0 +1,11 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { site, projects } from '../config/site';
+---
+<BaseLayout {...site.seo.projects}>
+  <section class="page-hero"><div class="container page-hero-inner"><div><p class="eyebrow light"><span class="eyebrow-line"></span>DEMO PROJECTS</p><h1>想法落地的<br /><em>每一种方式。</em></h1></div><p>这里展示的是虚构概念项目。它们用于说明如何呈现挑战、方案与能力，不代表真实客户或业绩。</p></div><span class="page-hero-index">02 / PROJECTS</span></section>
+  <section class="section projects-page"><div class="container"><div class="demo-notice"><span>DEMO CONTENT</span><p>所有案例均为演示内容。上线前请替换成已获许可的真实项目，并核对所有成果描述。</p></div><div class="project-grid projects-all">{projects.map((project) => <ProjectCard project={project} />)}</div></div></section>
+  <section class="section project-method"><div class="container"><p class="eyebrow"><span class="eyebrow-line"></span>THE THINKING BEHIND THE WORK</p><h2>每个项目，<em>先问为什么。</em></h2><div class="method-grid">{projects.map((project) => <article><span>{project.number} / {project.title}</span><h3>面临的挑战</h3><p>{project.challenge}</p><h3>构想的方法</h3><p>{project.approach}</p></article>)}</div></div></section>
+  <section class="mini-cta"><div class="container"><h2>你的挑战，值得一个清晰的解法。</h2><a class="button button-accent" href="/contact/">开始交流 <span aria-hidden="true">↗</span></a></div></section>
+</BaseLayout>

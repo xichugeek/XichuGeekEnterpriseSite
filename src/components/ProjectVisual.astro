@@ -1,0 +1,9 @@
+---
+interface Props { visual: 'grid' | 'flow' | 'signal'; }
+const { visual } = Astro.props;
+---
+<div class={`project-visual visual-${visual}`} aria-hidden="true">
+  {visual === 'grid' && <div class="mock-window"><div class="mock-sidebar"><b></b><i></i><i></i><i></i><i></i></div><div class="mock-main"><div class="mock-head"><b></b><span></span></div><div class="mock-stats"><i></i><i></i><i></i></div><div class="mock-lines"><span></span><span></span><span></span></div></div></div>}
+  {visual === 'flow' && <div class="flow-art"><div class="flow-node flow-node-a">01<span>需求</span></div><div class="flow-line"></div><div class="flow-node flow-node-b">02<span>流程</span></div><div class="flow-line"></div><div class="flow-node flow-node-c">03<span>交付</span></div></div>}
+  {visual === 'signal' && <div class="signal-art"><div class="signal-top"><i></i><i></i><i></i></div><div class="signal-bars"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div><div class="signal-base"></div></div>}
+</div>

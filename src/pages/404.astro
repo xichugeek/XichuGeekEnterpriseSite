@@ -1,0 +1,5 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../config/site';
+---
+<BaseLayout {...site.seo.notFound} noindex><section class="not-found"><div class="container"><p class="eyebrow"><span class="eyebrow-line"></span>PAGE NOT FOUND</p><span class="not-found-number">404</span><h1>这条路暂时没有内容。</h1><p>页面可能已移动，或者地址有误。回到首页继续探索。</p><a class="button button-dark" href="/">返回首页 <span aria-hidden="true">↗</span></a></div></section></BaseLayout>

@@ -1,0 +1,10 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../config/site';
+---
+<BaseLayout {...site.seo.about}>
+  <section class="page-hero"><div class="container page-hero-inner"><div><p class="eyebrow light"><span class="eyebrow-line"></span>ABOUT US</p><h1>相信清晰，<br /><em>可以创造改变。</em></h1></div><p>{site.description}</p></div><span class="page-hero-index">03 / ABOUT</span></section>
+  <section class="section about-story"><div class="container story-grid"><div><p class="eyebrow"><span class="eyebrow-line"></span>OUR POINT OF VIEW</p><h2>技术的价值，<br />始终在于<em>人。</em></h2></div><div><p class="story-lead">{site.about.belief}</p><p>{site.about.story}</p><p>{site.about.note}</p></div></div></section>
+  <section class="section values-section"><div class="container"><p class="eyebrow"><span class="eyebrow-line"></span>WHAT GUIDES US</p><h2>简单的原则，<em>持续的坚持。</em></h2><div class="value-grid">{site.values.map((value) => <article><span>{value.number}</span><h3>{value.title}</h3><p>{value.description}</p></article>)}</div></div></section>
+  <section class="about-panel"><div class="container about-panel-inner"><div class="about-panel-art" aria-hidden="true"><div class="panel-square square-a"></div><div class="panel-square square-b"></div><div class="panel-square square-c"></div><div class="panel-square square-d"></div><span>CLARITY<br />IN EVERY<br />STEP.</span></div><div><p class="eyebrow light"><span class="eyebrow-line"></span>THE WAY FORWARD</p><h2>把复杂留给过程，<br /><em>把清晰交给你。</em></h2><p>从一次对话开始，明确要解决的问题，再共同定义值得投入的下一步。</p><a class="button button-accent" href="/contact/">联系我们 <span aria-hidden="true">↗</span></a></div></div></section>
+</BaseLayout>

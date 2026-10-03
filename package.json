@@ -1,0 +1,22 @@
+{
+  "name": "ai-enterprise-website-starter",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev --host 0.0.0.0",
+    "build": "astro check && astro build",
+    "preview": "astro preview --host 0.0.0.0",
+    "check": "astro check",
+    "verify": "python scripts/verify-static.py"
+  },
+  "dependencies": {
+    "astro": "^7.3.5",
+    "@tailwindcss/vite": "^4.1.0",
+    "tailwindcss": "^4.1.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.5",
+    "typescript": "^5.9.0"
+  }
+}

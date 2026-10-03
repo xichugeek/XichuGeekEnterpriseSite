@@ -1,0 +1,9 @@
+services:
+  website:
+    build:
+      context: .
+      args:
+        PUBLIC_SITE_URL: ${PUBLIC_SITE_URL:-https://example.com}
+    ports:
+      - "${SITE_PORT:-8080}:80"
+    restart: unless-stopped

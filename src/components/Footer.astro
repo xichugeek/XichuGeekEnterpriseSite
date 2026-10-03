@@ -1,0 +1,19 @@
+---
+import { site } from '../config/site';
+---
+<footer class="site-footer">
+  <div class="container footer-top">
+    <div>
+      <div class="footer-brand">{site.companyName}<span class="footer-dot">.</span></div>
+      <p>{site.shortDescription}</p>
+    </div>
+    <div class="footer-nav-wrap">
+      <div><span>浏览</span><a href="/services/">服务与能力</a><a href="/projects/">项目案例</a><a href="/about/">关于我们</a></div>
+      <div><span>联系</span><a href="/contact/">联系我们</a><a href={`mailto:${site.email}`}>{site.email}</a>{site.social.linkedin && <a href={site.social.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>}{site.social.github && <a href={site.social.github} target="_blank" rel="noopener noreferrer">GitHub ↗</a>}</div>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© {new Date().getFullYear()} {site.companyName}. This is demo content.</span>
+    <span>{site.tagline}</span>
+  </div>
+</footer>

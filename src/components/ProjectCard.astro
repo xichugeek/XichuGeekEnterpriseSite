@@ -1,0 +1,15 @@
+---
+import { projects, type Project } from '../config/site';
+import ProjectVisual from './ProjectVisual.astro';
+interface Props { project: Project; }
+const { project } = Astro.props;
+---
+<article class="project-card">
+  <ProjectVisual visual={project.visual} />
+  <div class="project-card-content">
+    <div class="project-meta"><span>{project.type}</span><span>{project.number} / {String(projects.length).padStart(2, '0')}</span></div>
+    <h3>{project.title}</h3>
+    <p>{project.summary}</p>
+    <div class="project-tags">{project.tags.map((tag) => <span>{tag}</span>)}</div>
+  </div>
+</article>
