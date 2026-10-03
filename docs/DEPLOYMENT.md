@@ -12,6 +12,7 @@
 git clone https://github.com/xichugeek/XichuGeekEnterpriseSite.git
 cd XichuGeekEnterpriseSite
 export PUBLIC_SITE_URL=https://www.your-company.example
+export SITE_BIND=127.0.0.1
 export SITE_PORT=8080
 docker compose up -d --build
 docker compose ps
@@ -22,7 +23,7 @@ curl -I http://127.0.0.1:8080/
 
 ## 3. 反向代理和 HTTPS
 
-在 VPS 的主机 Nginx、Caddy 或现有入口代理上，为你的域名建立 HTTPS 站点，并反向代理到 `http://127.0.0.1:8080`。建议把 Compose 端口改为仅绑定本机，例如将 `ports` 临时改为 `127.0.0.1:8080:80`，避免直接暴露容器 HTTP 端口。HTTPS 证书可通过 Let's Encrypt 的 ACME 客户端自动签发与续期；先确认域名解析和 80/443 可达。域名代理处传递 `Host`、`X-Forwarded-For`、`X-Forwarded-Proto`，并将 HTTP 重定向到 HTTPS。
+在 VPS 的主机 Nginx、Caddy 或现有入口代理上，为你的域名建立 HTTPS 站点，并反向代理到 `http://127.0.0.1:8080`。Compose 默认通过 `SITE_BIND=127.0.0.1` 仅绑定本机，无需修改 Compose 文件。只有明确需要直接公开容器 HTTP 端口时，才设置 `SITE_BIND=0.0.0.0`；`SITE_PORT` 可单独调整主机端口。HTTPS 证书可通过 Let's Encrypt 的 ACME 客户端自动签发与续期；先确认域名解析和 80/443 可达。域名代理处传递 `Host`、`X-Forwarded-For`、`X-Forwarded-Proto`，并将 HTTP 重定向到 HTTPS。
 
 本项目的 `nginx.conf` 是**容器内部的静态文件服务配置**，不包含域名证书或生产环境入口设置。容器运行时不需要 Node.js。
 

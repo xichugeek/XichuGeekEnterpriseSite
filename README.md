@@ -12,7 +12,7 @@
 - 公司信息、服务、案例、页面 SEO 文案集中在 `src/config/site.ts`。
 - 响应式布局与无 JavaScript 的移动导航；联系按钮使用 `mailto:`，没有伪装成可发送的表单。
 - 静态输出、canonical、Open Graph、favicon、robots.txt 和 sitemap.xml。
-- 多阶段 Docker 构建，以 Nginx 提供静态文件；Compose 默认映射本机 8080 端口。
+- 多阶段 Docker 构建，以 Nginx 提供静态文件；Compose 默认仅监听 `127.0.0.1:8080`。
 
 ## Tech Stack
 
@@ -82,7 +82,7 @@ PUBLIC_SITE_URL=https://www.your-company.example docker compose up -d --build
 docker compose down
 ```
 
-PowerShell：`$env:PUBLIC_SITE_URL='https://www.your-company.example'; docker compose up -d --build`。用 `SITE_PORT=8081` 可修改主机端口。Compose 只负责 HTTP 容器；正式 HTTPS 与域名设置见 [部署指南](docs/DEPLOYMENT.md)。
+PowerShell：`$env:PUBLIC_SITE_URL='https://www.your-company.example'; docker compose up -d --build`。用 `SITE_PORT=8081` 可修改主机端口。默认 `SITE_BIND=127.0.0.1`，容器 HTTP 端口只允许本机访问，适合本地验证或主机反向代理。只有明确需要直接公开容器端口时，才设置 `SITE_BIND=0.0.0.0`。Compose 只负责 HTTP 容器；正式 HTTPS 与域名设置见 [部署指南](docs/DEPLOYMENT.md)。
 
 ## Production Deployment
 
